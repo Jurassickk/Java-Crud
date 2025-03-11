@@ -13,7 +13,7 @@ public class Categories {
 
     @Column(name = "name", length = 50, nullable = false)
     private String name;
-
+    
     public Categories() {
     }
 

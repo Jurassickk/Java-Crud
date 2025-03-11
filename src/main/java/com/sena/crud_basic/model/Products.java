@@ -1,7 +1,4 @@
 package com.sena.crud_basic.model;
-
-import java.text.DecimalFormat;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -20,13 +17,17 @@ public class Products {
     private String type;
 
     @Column(name = "price", nullable = false)
-    private DecimalFormat price;
+
+
+    private double price;
+
 
     public Products() {
 
     }
 
-    public Products(int product_id, String name, String type, DecimalFormat price) {
+
+    public Products(int product_id, String name, String type, double price) {
         this.product_id = product_id;
         this.name = name;
         this.type = type;
@@ -57,11 +58,11 @@ public class Products {
         this.type = type;
     }
 
-    public DecimalFormat getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(DecimalFormat price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
