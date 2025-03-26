@@ -47,11 +47,14 @@ public class EmployeesService {
 
     // Eliminar un empleado por ID
     public ResponseDto deleteEmployee(int id) {
-        if (!findById(id).isPresent()) {
+        Optional<Employees> empleado = findById(id);
+        if (!empleado.isPresent()) {
             ResponseDto respuesta = new ResponseDto(HttpStatus.OK.toString(), "Empleado no Existe");
             return respuesta;
         }   
-        employeesRepository.deleteById(id);
+        empleado.get().setStatus(false); 
+        employeesRepository.save(empleado.get());
+        //employeesRepository.deleteById(id);
         ResponseDto respuesta = new ResponseDto(HttpStatus.OK.toString(), "Empleado Eliminado");
         return respuesta;
     }

@@ -4,9 +4,14 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
 import com.sena.crud_basic.Dto.CategoriesDto;
+
+import org.springframework.http.HttpStatus;
+
+import com.sena.crud_basic.Dto.ResponseDto;
 import com.sena.crud_basic.model.Categories;
 import com.sena.crud_basic.repository.ICategories;
 
@@ -15,26 +20,32 @@ public class CategoriesService {
 
     @Autowired
     private ICategories categoriesRepository;
+    public ResponseDto save(CategoriesDto categoriesDto) {
+        if (categoriesDto.getName().length() < 1 || categoriesDto.getName().length() > 100) {
+            return new ResponseDto(HttpStatus.BAD_REQUEST.toString(), "El nombre debe estar entre 1 y 100 caracteres");
+        }
 
-    public void save(CategoriesDto categoriesDto) {
-        Categories categorie = convertToModel(categoriesDto);
-        categoriesRepository.save(categorie);
+        Categories categoriesRegister = convertToModel(categoriesDto);
+        categoriesRepository.save(categoriesRegister);
+        return new ResponseDto(HttpStatus.OK.toString(), "Producto agregado correctamente");
     }
 
     public List<Categories> getAllProducts() {
         return categoriesRepository.findAll();
     }
 
-    public Optional<Categories> getProductById(int id) {
+    public Optional<Categories> findById(int id) {
         return categoriesRepository.findById(id);
     }
 
-    public void saveProduct(Categories categorie) {
-        categoriesRepository.save(categorie);
-    }
-
-    public void deleteProduct(int id) {
+    public ResponseDto deleteCategories(int id) {
+        if (!findById(id).isPresent()) {
+            ResponseDto respuesta = new ResponseDto(HttpStatus.OK.toString(), "Empleado no Existe");
+            return respuesta;
+        }   
         categoriesRepository.deleteById(id);
+        ResponseDto respuesta = new ResponseDto(HttpStatus.OK.toString(), "Empleado Eliminado");
+        return respuesta;
     }
 
     public CategoriesDto convertToDto(Categories categorie) {

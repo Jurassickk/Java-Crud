@@ -48,7 +48,6 @@ public class EmployeesController {
         ResponseDto respuesta = employeesService.save(employeesDto);
         return new ResponseEntity<>(respuesta, HttpStatus.OK);
     }
-
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteEmployee(@PathVariable int id) {
         var message= employeesService.deleteEmployee(id);
