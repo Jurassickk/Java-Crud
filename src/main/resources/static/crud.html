@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Producto - MiTienda</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav>
+    <div class="logo">&#128511; MiTienda</div>
+    <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="catalago.html">Listar Productos</a></li>
+        <li><a href="buscar.html">Buscar Producto</a></li>
+        <li><a href="crud.html">Crear Producto</a></li>
+    </ul>
+</nav>
+
+<section class="form-section">
+    <h2>Crear Nuevo Producto</h2>
+    <form action="procesar_crear.php" method="POST">
+        <label>Nombre del Producto</label>
+        <input type="text" name="nombre" required>
+
+        <label>Descripción</label>
+        <input type="text" name="descripcion" required>
+
+        <label>Precio</label>
+        <input type="number" name="precio" step="0.01" required>
+
+        <label>Imagen (URL)</label>
+        <input type="url" name="imagen" required>
+
+        <button type="submit">Crear Producto</button>
+    </form>
+</section>
+
+<footer>
+    © 2025 MiTienda - Todos los derechos reservados.
+</footer>
+
+</body>
+</html>

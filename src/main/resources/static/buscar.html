@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscar Producto - MiTienda</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav>
+    <div class="logo">&#128511; MiTienda</div>
+    <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="catalago.html">Listar Productos</a></li>
+        <li><a href="buscar.html">Buscar Producto</a></li>
+        <li><a href="crud.html">Crear Producto</a></li>
+    </ul>
+</nav>
+
+<section class="form-section">
+    <h2>Buscar Producto</h2>
+    <form action="procesar_buscar.php" method="GET">
+        <label>Nombre del Producto</label>
+        <input type="text" name="nombre" required>
+
+        <button type="submit">Buscar</button>
+    </form>
+</section>
+
+<footer>
+    © 2025 MiTienda - Todos los derechos reservados.
+</footer>
+
+</body>
+</html>
