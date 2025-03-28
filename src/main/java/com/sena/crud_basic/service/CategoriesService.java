@@ -30,7 +30,7 @@ public class CategoriesService {
         return new ResponseDto(HttpStatus.OK.toString(), "Producto agregado correctamente");
     }
 
-    public List<Categories> getAllProducts() {
+    public List<Categories> getAllcategories() {
         return categoriesRepository.findAll();
     }
 

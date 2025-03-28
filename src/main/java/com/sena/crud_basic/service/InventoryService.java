@@ -33,7 +33,7 @@ public class InventoryService {
         return new ResponseDto(HttpStatus.OK.toString(), "Producto agregado correctamente");
     }
 
-    public List<Inventory> getAllProducts() {
+    public List<Inventory> getAllProductsInventories() {
         return inventoryRepository.findAll();
     }
 
@@ -43,11 +43,11 @@ public class InventoryService {
 
     public ResponseDto deleteInventory(int id) {
         if (!findById(id).isPresent()) {
-            ResponseDto respuesta = new ResponseDto(HttpStatus.OK.toString(), "Empleado no Existe");
+            ResponseDto respuesta = new ResponseDto(HttpStatus.OK.toString(), "Inventario no Existe");
             return respuesta;
         }   
         inventoryRepository.deleteById(id);
-        ResponseDto respuesta = new ResponseDto(HttpStatus.OK.toString(), "Empleado Eliminado");
+        ResponseDto respuesta = new ResponseDto(HttpStatus.OK.toString(), "Inventario Eliminado");
         return respuesta;
     }
 
