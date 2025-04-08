@@ -10,10 +10,10 @@ import com.sena.crud_basic.model.Employees;
 
 public interface IEmployees extends JpaRepository<Employees, Integer> {
 
-    @Query("SELECT u FROM user u WHERE u.status != false")
+    @Query("SELECT u FROM employees u WHERE u.status != false")
     List<Employees> getListEmployeesActive();
 
-    @Query("SELECT u FROM user u WHERE u.name LIKE %?1%")
+    @Query("SELECT u FROM employees u WHERE u.name LIKE %?1%")
     List<Employees> getListEmployees(String filter);
     
 }

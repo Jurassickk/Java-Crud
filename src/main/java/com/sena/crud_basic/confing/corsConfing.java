@@ -1,5 +1,7 @@
 package com.sena.crud_basic.confing;
 
+import java.util.Arrays;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
@@ -16,7 +18,7 @@ public class corsConfing {
         
         //permitir solicitudes desde todos los origenes:
         //  config.addAllowedOrigin("*");
-        config.addAllowedOrigin("http://127.0.0.1:5500");
+        config.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
 
         //permitir solicitudes con estos metodos HTTP
         config.addAllowedMethod("GET");
@@ -24,9 +26,12 @@ public class corsConfing {
         config.addAllowedMethod("PUT");
         config.addAllowedMethod("DELETE");
 
+        //permitir solicitudes con estos encabezados
+        config.addAllowedHeader("*");
+
         //permitir el envio de ciertos encabezados en las solicitudes
         config.addAllowedHeader("Authorization");
-        config.addAllowedHeader("Content-Type");
+        config.addAllowedHeader("Content-Type");    
         //config.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
         config.setAllowCredentials(true);
         source.registerCorsConfiguration("/**", config);

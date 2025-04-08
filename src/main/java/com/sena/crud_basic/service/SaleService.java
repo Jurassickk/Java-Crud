@@ -28,7 +28,7 @@ public class SaleService {
         return saleRepository.findAll();
     }
 
-    public List<Sale> getSalesByCustomer(int customerId) {
+    /*  public List<Sale> getSalesByCustomer(int customerId) {
         return saleRepository.getSalesByCustomer(customerId);
     }
 
@@ -38,7 +38,7 @@ public class SaleService {
 
     public List<Sale> getSalesAboveAmount(double total) {
         return saleRepository.getSalesAboveAmount(total);
-    }
+    } */
 
     public Optional<Sale> findById(int id) {
         return saleRepository.findById(id);
@@ -53,7 +53,7 @@ public class SaleService {
     }
 
     public SaleDto convertToDto(Sale sale) {
-        return new SaleDto(sale.getCustomer(), sale.getEmployee(), sale.getTotal());
+        return new SaleDto(sale.getCustomerId(), sale.getEmployeeId(), sale.getTotal());
     }
 
     public Sale convertToModel(SaleDto saleDto) {

@@ -10,14 +10,15 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.sena.crud_basic.Dto.ProductsDto;
 import com.sena.crud_basic.Dto.ResponseDto;
 import com.sena.crud_basic.model.Products;
-
 import com.sena.crud_basic.service.ProductService;
 
 @RestController
@@ -36,7 +37,7 @@ public class ProductsController {
     public ResponseEntity<Object> getProductById(@PathVariable int id) {
         Optional<Products> product = productsService.findById(id);
         return product.isPresent() ? new ResponseEntity<>(product, HttpStatus.OK)
-                                   : new ResponseEntity<>("Producto no encontrado", HttpStatus.NOT_FOUND);
+                : new ResponseEntity<>("Producto no encontrado", HttpStatus.NOT_FOUND);
     }
 
     @GetMapping("/price-range")
@@ -55,7 +56,13 @@ public class ProductsController {
         return new ResponseEntity<>(respuesta, HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
+    @PutMapping("/{id}")
+    public ResponseEntity<ResponseDto> updateProduct(@PathVariable int id, @RequestBody ProductsDto productsDto) {
+        ResponseDto respuesta = productsService.updateProduct(id, productsDto);
+        return new ResponseEntity<>(respuesta, HttpStatus.OK);
+    }
+
+        @DeleteMapping("/{id}")
     public ResponseEntity<ResponseDto> deleteProduct(@PathVariable int id) {
         var message = productsService.deleteProduct(id);
         return new ResponseEntity<>(message, HttpStatus.OK);

@@ -5,11 +5,13 @@ public class ProductsDto {
     private String name;
     private String type;
     private double price;
+    private String image;
 
-    public ProductsDto(String name, String type, double price) {
+    public ProductsDto(String name, String type, double price, String image) {
         this.name = name;
         this.type = type;
         this.price = price;
+        this.image = image;
     }
 
     public String getName() {
@@ -34,5 +36,13 @@ public class ProductsDto {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

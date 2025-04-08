@@ -1,9 +1,9 @@
 package com.sena.crud_basic.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity(name = "products")
 public class Products {
@@ -20,9 +20,10 @@ public class Products {
     private String type;
 
     @Column(name = "price", nullable = false)
-
-
     private double price;
+
+    @Column(name = "image", length = 255)
+    private String image;
 
 
     public Products() {
@@ -30,11 +31,12 @@ public class Products {
     }
 
 
-    public Products(int product_id, String name, String type, double price) {
+    public Products(int product_id, String name, String type, double price, String image) {
         this.product_id = product_id;
         this.name = name;
         this.type = type;
         this.price = price;
+        this.image = image;
     }
 
     public int getProduct_id() {
@@ -67,6 +69,14 @@ public class Products {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
 }

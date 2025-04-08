@@ -28,6 +28,23 @@ public class ProductService {
         return new ResponseDto(HttpStatus.OK.toString(), "Producto agregado correctamente");
     }
 
+    public ResponseDto updateProduct(int id, ProductsDto productsDto) {
+        Optional<Products> productOpt = findById(id);
+        if (!productOpt.isPresent()) {
+            ResponseDto respuesta = new ResponseDto(
+                    HttpStatus.NOT_FOUND.toString(),
+                    "Producto no existe");
+            return respuesta;
+        }
+        Products productRegister = convertToModel(productsDto);
+        productRegister.setProduct_id(id);
+        productRepository.save(productRegister);
+        ResponseDto respuesta = new ResponseDto(
+                HttpStatus.OK.toString(),
+                "Producto actualizado correctamente");
+        return respuesta;
+    }
+
     public List<Products> findAll() {
         return productRepository.findAll();
     }
@@ -53,10 +70,10 @@ public class ProductService {
     }
 
     public ProductsDto convertToDto(Products product) {
-        return new ProductsDto(product.getName(), product.getType(), product.getPrice());
+        return new ProductsDto(product.getName(), product.getType(), product.getPrice(), product.getImage());
     }
 
     public Products convertToModel(ProductsDto productDto) {
-        return new Products(0, productDto.getName(), productDto.getType(), productDto.getPrice());
+        return new Products(0, productDto.getName(), productDto.getType(), productDto.getPrice(), productDto.getImage());
     }
 }

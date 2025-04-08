@@ -46,19 +46,19 @@ public class Sale {
         this.saleId = saleId;
     }
 
-    public Customers getCustomer() {
+    public Customers getCustomerId() {
         return customerId;
     }
 
-    public void setCustomer(Customers customer) {
+    public void setCustomerId(Customers customer) {
         this.customerId = customer;
     }
 
-    public Employees getEmployee() {
+    public Employees getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployee(Employees employee) {
+    public void setEmployeeId(Employees employee) {
         this.employeeId = employee;
     }
 
